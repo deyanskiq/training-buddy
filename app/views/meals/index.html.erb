@@ -1,0 +1,28 @@
+<%= flash[:error] if flash[:error] %>
+<%= flash[:notice] if flash[:notice] %>
+
+<table>
+	<tr>
+		<th>food</th>
+		<th>grams</th>
+		<th colspan="4">Options</th>
+	</tr>
+
+	<tbody>
+    <% if @meals.empty? %>
+      <strong> No meals yet</strong>
+    <% else %>
+    	<% @meals.each do |meals| %>
+    		<tr>
+    			<td><%= meals.food_id %></td>
+    			<td><%= meals.grams %></td>
+                <td><%= link_to 'View meal', meal_path(meals.id) %></td>
+                <td><%= link_to 'Back to day', day_path(params[:day_id]) %></td>
+                <td><%= link_to 'Back to user', user_path(current_user) %></td>
+                <td><%= link_to 'Delete meals', meals,  method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    		</tr>
+    	<% end %>
+		<% end %>
+	</tbody>
+</table>
+ 

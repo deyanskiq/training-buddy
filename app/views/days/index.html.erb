@@ -1,0 +1,15 @@
+<% provide(:days_active, "active") %>
+<% provide(:page_title, "Days") %>
+
+<%= flash[:error] if flash[:error] %>
+<%= flash[:notice] if flash[:notice] %>
+
+
+<div class="row">
+    <% @days.each do |day| %>
+        <%= render day %>
+    <% end %> 
+</div>
+
+<%= link_to 'Back to user', user_path(params[:user_id]) %>
+<%=  link_to 'New day',{:action => :create}, :method => :post, :user_id => params[:user_id] %>

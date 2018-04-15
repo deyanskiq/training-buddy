@@ -1,0 +1,10 @@
+<%= flash[:error] if flash[:error] %>
+<%= flash[:notice] if flash[:notice] %>
+
+<%= form_for @day, method: :patch, url: 
+	day_path(@day) do |f| %>
+  <%= f.label :protein %></br>
+  <%= f.text_field :protein %></br>
+
+  <%= f.submit %>
+<% end %>
